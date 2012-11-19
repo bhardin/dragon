@@ -1,4 +1,3 @@
-module Dragon
-  class Thing < BasicObject
-  end
+class Thing
+
 end
