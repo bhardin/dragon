@@ -6,4 +6,4 @@ content = File.read ARGV.first
 parser = Dragon::Parser.new
 tree = parser.parse content
 transformer = Dragon::Transformer.new
-pp tree
+transformer.apply tree
