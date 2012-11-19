@@ -11,7 +11,7 @@ class TestParser < MiniTest::Unit::TestCase
   end
 
   def expected_single_token(token, string, slice = 0)
-    [{ token => slice(string, slice) }]
+    { line: [{ token => slice(string, slice) }] }
   end
 
   def test_return_of_word
