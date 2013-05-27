@@ -1,3 +1,11 @@
 source "https://rubygems.org"
 
 gem "parslet"
+gem "rake"
+gem "minitest", "~> 5.0"
+gem "m"
+gem "yard"
+gem "kramdown"
+gem "coveralls"
+gem "json", "~> 1.7"
+gem "pry"
