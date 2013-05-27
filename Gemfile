@@ -1,3 +1,3 @@
-source :rubygems
+source "https://rubygems.org"
 
-gem 'parslet'
+gem "parslet"
