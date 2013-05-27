@@ -11,7 +11,7 @@ module Dragon
     rule(:digit) { match "[0-9]" }
     rule(:zero) { str "0" }
     rule(:integer) { match "[1-9]" }
-    rule(:quote) { str '"' }
+    rule(:quote) { str "\"" }
     rule(:comma) { str "," }
     rule(:comma?) { comma.maybe }
     rule(:colon) { str ":" }
@@ -21,7 +21,7 @@ module Dragon
     rule(:close_paren) { str ")" }
     rule(:atom) { match["a-zA-Z0-9"] }
     rule(:number) { ( zero | integer >> digit.repeat.maybe).as :number }
-    rule(:text) { quote >> (str('\\') >> any | quote.absent? >> any).repeat.as(:text) >> quote }
+    rule(:text) { quote >> (str("\\") >> any | quote.absent? >> any).repeat.as(:text) >> quote }
     rule(:word) { ((lower | operators | symbols) >> atom.repeat).as :word }
     rule(:argument) { space? >> token >> space? }
     rule(:assignment) { word >> colon >> space? >> expressions.as(:value) }
