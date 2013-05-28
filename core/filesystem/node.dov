@@ -1,0 +1,9 @@
+Filesystem ->
+  Node: Object clone() ->
+    build: method(name) ->
+      if(exists?()) ->
+        open()
+
+    private ->
+      open: method() ->
+

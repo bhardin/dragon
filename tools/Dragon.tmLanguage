@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>dov</string>
+	</array>
+	<key>name</key>
+	<string>Dragon</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>begin</key>
+			<string>"""</string>
+			<key>comment</key>
+			<string>Regular triple quoted text</string>
+			<key>end</key>
+			<string>"""</string>
+			<key>name</key>
+			<string>string.quoted.triple.dov</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Regular doubled quoted text</string>
+			<key>match</key>
+			<string>("|\)\))(\\"|.)*?("|\(\()</string>
+			<key>name</key>
+			<string>string.quoted.double.dov</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>The comment character.</string>
+			<key>match</key>
+			<string>#.*</string>
+			<key>name</key>
+			<string>comment.dov</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>An object reference.</string>
+			<key>match</key>
+			<string>(^|\b)[A-Z]\w+(\?|!|)</string>
+			<key>name</key>
+			<string>entity.name.class.dov</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>The assignment operators.</string>
+			<key>match</key>
+			<string>\w+(\?|!|\*|):</string>
+			<key>name</key>
+			<string>support.variable.dov</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>The syntax for methods, and their parens.</string>
+			<key>match</key>
+			<string>(method|)\(|\)</string>
+			<key>name</key>
+			<string>support.function.dov</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>The scoping arrow.</string>
+			<key>match</key>
+			<string>-&gt;</string>
+			<key>name</key>
+			<string>variable.language.dov</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Numbers</string>
+			<key>match</key>
+			<string>-?\d+(_|e|\.\d*)*</string>
+			<key>name</key>
+			<string>constant.numeric.dov</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Boolean Io values.</string>
+			<key>match</key>
+			<string>true|false|nil</string>
+			<key>name</key>
+			<string>constant.language.dov</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.dov</string>
+	<key>uuid</key>
+	<string>675edc59-4878-40e6-8bab-e7e9a73afc6c</string>
+</dict>
+</plist>

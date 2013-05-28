@@ -1,0 +1,10 @@
+Text: Object clone ->
+  as_list: method ->
+    split(" ")
+  add_at: method(index, string)
+  assign: method(value_or_hash)
+
+  source("assign") document ->
+    body("Assigns the argument(s) given to tokens in the string.")
+    examples add(""" "Hello, ((name))! I'm Home!" assign({ name: "Lucy" }) """)
+    examples add(""" "I want to buy ((1)) ((2))" assign(5, "Beers")) """)

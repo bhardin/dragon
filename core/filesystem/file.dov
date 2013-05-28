@@ -1,0 +1,7 @@
+Filesystem ->
+  File: Object clone() ->
+    mimics(Node)
+
+    write: method()
+    close: method()
+    read: method()

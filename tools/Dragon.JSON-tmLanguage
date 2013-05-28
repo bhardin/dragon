@@ -1,0 +1,44 @@
+{ "name": "Dragon",
+  "scopeName": "source.dov",
+  "fileTypes": ["dov"],
+  "patterns": [
+    {
+      "begin": "\"\"\"",
+      "end": "\"\"\"",
+      "name": "string.quoted.triple.dov",
+      "comment": "Regular triple quoted text" },
+    {
+      "match": "(\"|\\)\\))(\\\\\"|.)*?(\"|\\(\\()",
+      "name": "string.quoted.double.dov",
+      "comment": "Regular doubled quoted text" },
+    {
+      "match": "#.*",
+      "name": "comment.dov",
+      "comment": "The comment character." },
+    {
+      "match": "(^|\\b)[A-Z]\\w+(\\?|!|)",
+      "name": "entity.name.class.dov",
+      "comment": "An object reference." },
+    {
+      "match": "\\w+(\\?|!|\\*|):",
+      "name": "support.variable.dov",
+      "comment": "The assignment operators." },
+    {
+      "match": "(method|)\\(|\\)",
+      "name": "support.function.dov",
+      "comment": "The syntax for methods, and their parens." },
+    {
+      "match": "->",
+      "name": "variable.language.dov",
+      "comment": "The scoping arrow." },
+    {
+      "match": "-?\\d+(_|e|\\.\\d*)*",
+      "name": "constant.numeric.dov",
+      "comment": "Numbers" },
+    {
+      "match": "true|false|nil",
+      "name": "constant.language.dov",
+      "comment": "Boolean Io values." }
+  ],
+  "uuid": "675edc59-4878-40e6-8bab-e7e9a73afc6c"
+}

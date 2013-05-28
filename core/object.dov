@@ -1,0 +1,7 @@
+Object ->
+  mimics(Method)
+
+  to_string: method() ->
+    "{{type}}" interpolate
+  to_boolean: method()
+  clone: method()

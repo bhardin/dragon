@@ -1,0 +1,23 @@
+List: Object clone ->
+  to_text: method ->
+    join(", ")
+
+  to_lexicon: method ->
+    Lexicon build with(grouped_by(2))
+
+  # Join each item together
+  join: method(delimiter) ->
+    if(delimiter = nil) then(delimiter: " ")
+    text: ""
+    each(item) ->
+      text .. item .. delimiter
+    text
+
+  intersect: nil
+  include: nil
+  merge: nil
+  redact: nil
+  add: nil
+  remove: nil
+  compares_to: nil
+  same_as?: nil

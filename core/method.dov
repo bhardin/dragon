@@ -1,0 +1,15 @@
+load "method/documentation"
+
+Method: Object clone( ) ->
+  build: method(name, arguments, source) ->
+    if(documentation?) ->
+      documentation: Documentation build(name, arguments)
+
+  explain: method(docstring, block) ->
+    if(documentation?) ->
+      if(block_given?) ->
+        documentation evaluate(block)
+      if(docstring) ->
+        documentation docstring: docstring
+
+  documentation?: ENVIRONMENT key("DOCUMENTATION_MODE") to_boolean

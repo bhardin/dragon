@@ -1,0 +1,3 @@
+Filesystem ->
+  Folder: Object clone() ->
+    mimics(Entity)
