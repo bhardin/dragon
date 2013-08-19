@@ -1,5 +1,9 @@
 dragon
 ------
+  - [![Code Climate](https://codeclimate.com/github/krainboltgreene/dragon.png)](https://codeclimate.com/github/krainboltgreene/dragon)
+  - [![Build Status](https://travis-ci.org/krainboltgreene/dragon.png)](https://travis-ci.org/krainboltgreene/dragon)
+  - [![Dependency Status](https://gemnasium.com/krainboltgreene/dragon.png)](https://gemnasium.com/krainboltgreene/dragon)
+  - [![Coverage Status](https://coveralls.io/repos/krainboltgreene/dragon/badge.png)](https://coveralls.io/r/krainboltgreene/dragon)
 
 A summery of this language
 
