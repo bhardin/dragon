@@ -18,7 +18,6 @@ module Dragon
       @@world ||= Thing.new
       this = expressions.first.is_a?(Array) ? @@world : expressions.shift
       expressions.inject this do |memo, item|
-        # puts "Memo: #{memo}, Item: #{item}"
         memo.send item.shift, *item.shift
       end
     end
