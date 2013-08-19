@@ -1,25 +1,13 @@
 require "parslet"
+require_relative "parser/whitespace"
 
 module Dragon
   class Parser < Parslet::Parser
+    include Whitespace
+
     # comment = "#", { any };
     rule(:comment) do
       str("#") >> any.repeat
-    end
-
-    # space = "\s" | "\t";
-    rule(:space) do
-      match["\s|\t"]
-    end
-
-    # newline = "\n" | "\r";
-    rule(:newline) do
-      match["\n|\r"]
-    end
-
-    # white space = { space };
-    rule(:white_space) do
-      space.repeat
     end
 
     # upper letter = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z";
