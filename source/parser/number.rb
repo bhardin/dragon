@@ -16,16 +16,19 @@ module Dragon
         zero | integer
       end
 
-      def point; str(".") end
-
       # decimal = integer, { digit } , ".", { digit };
       def decimal
-        ( integer >> digit.repeat(1) | digit  ) >> point >> digit.repeat(1)
+        ( integer >> digit.repeat(1) | digit  ) >> str(".") >> digit.repeat(1)
       end
 
       # negative = "-", decimal | { digit };
       def negative
         str("-") >> (decimal | digit.repeat(1))
+      end
+
+      # number = negative | decimal | digit
+      def number
+        digit.as(:digit) | negative.as(:negative) | decimal.as(:decimal)
       end
     end
   end

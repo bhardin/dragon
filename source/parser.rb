@@ -1,27 +1,23 @@
 require_relative "parser/whitespace"
 require_relative "parser/letter"
 require_relative "parser/number"
+require_relative "parser/quote"
 
 module Dragon
   class Parser < Parslet::Parser
     include Whitespace
     include Letter
     include Number
+    include Quote
 
     # comment = "#", { any };
     rule(:comment) do
       str("#") >> any.repeat
     end
 
-
     # symbol = "?" | "!" | "_" | "@" | "$" | "%" | "^" | "&" | "/" | "\" | "~" | "-" | "|" | "=" | "*" | "<" | ">" | ";" | "+";
     rule(:symbol) do
       match['\?!_@$%^&/\\\~\-|=\*<>;\+']
-    end
-
-    # number = negative | decimal | digit
-    rule(:number) do
-      digit.as(:digit) | negative.as(:negative) | decimal.as(:decimal)
     end
 
     # character = letter | digit | symbol;
@@ -32,25 +28,6 @@ module Dragon
     # word = character, { character };
     rule(:word) do
       character.repeat(1)
-    end
-
-    rule(:single) { str("'") }
-
-    # single quoted = "'", [{ '\', ANY | "'"?, ANY }], "'";
-    rule(:single_quoted) do
-      single >> ((str('\\') >> any) | (single.absent? >> any)).repeat >> single
-    end
-
-    rule(:double) { str('"') }
-
-    # double quoted = '"', [{ '\', ANY | '"'?, ANY }], '"';
-    rule(:double_quoted) do
-      double >> ((str('\\') >> any) | (double.absent? >> any)).repeat >> double
-    end
-
-    # text = single quote | double quote
-    rule(:text) do
-      (single_quoted | double_quoted).as(:text)
     end
 
     rule(:open) { str("(") }

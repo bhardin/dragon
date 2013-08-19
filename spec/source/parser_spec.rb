@@ -3,9 +3,6 @@ require "spec_helper"
 describe Dragon::Parser do
   let(:parser) { described_class.new }
 
-
-
-
   describe "#comment" do
     it "parses # Foo Bar" do
       expect(parse(:comment, "# Foo Bar")).to eq("# Foo Bar")
@@ -95,18 +92,6 @@ describe Dragon::Parser do
   describe "#zero" do
     it "parses 0" do
       expect(parse(:zero, "0")).to eq("0")
-    end
-  end
-
-  describe "#single_quoted" do
-    it "parses 'Foo'" do
-      expect(parse(:single_quoted, "'Foo'")).to eq("'Foo'")
-    end
-  end
-
-  describe "#double_quoted" do
-    it "parses \"Foo\"" do
-      expect(parse(:double_quoted, "\"Foo\"")).to eq("\"Foo\"")
     end
   end
 
