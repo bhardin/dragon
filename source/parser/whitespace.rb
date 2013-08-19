@@ -1,5 +1,3 @@
-require "parslet"
-
 module Dragon
   class Parser < Parslet::Parser
     module Whitespace

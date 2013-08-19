@@ -1,29 +1,16 @@
-require "parslet"
 require_relative "parser/whitespace"
+require_relative "parser/letter"
 
 module Dragon
   class Parser < Parslet::Parser
     include Whitespace
+    include Letter
 
     # comment = "#", { any };
     rule(:comment) do
       str("#") >> any.repeat
     end
 
-    # upper letter = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z";
-    rule(:upper_letter) do
-      match["A-Z"]
-    end
-
-    # lower letter = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z";
-    rule(:lower_letter) do
-      match["a-z"]
-    end
-
-    # letter = upper letter | lower letter;
-    rule(:letter) do
-      upper_letter | lower_letter
-    end
 
     # symbol = "?" | "!" | "_" | "@" | "$" | "%" | "^" | "&" | "/" | "\" | "~" | "-" | "|" | "=" | "*" | "<" | ">" | ";" | "+";
     rule(:symbol) do
