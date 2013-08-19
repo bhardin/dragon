@@ -1,0 +1,20 @@
+Account: Object clone
+  build: method
+    this name: name
+    this password: password
+  tweets: method
+    Twitter User authenticate(name: name, password: password) tweets
+
+account: Account clone(name: "krainboltgreene", password: "12341234")
+
+window
+  stack(title: "Account")
+    row
+      "Username: {{account name}}"
+    row
+      "Mentions {{account mentions size}}"
+
+  stack(title: "Tweets")
+    tweets each(as: "tweet")
+      row
+        "{{tweet user name}}: {{tweet message}}"

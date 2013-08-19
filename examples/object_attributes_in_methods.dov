@@ -1,0 +1,11 @@
+Person: Thing clone
+  name: "everyone"
+  speak: method
+    "Hello {{name}}" interpolate line print
+
+
+john: Person make
+john speak(name: "Emily") # "Hello Emily"
+
+paul: Person make(name: "Foo")
+paul speak # "Hello foo"

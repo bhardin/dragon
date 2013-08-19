@@ -1,0 +1,32 @@
+# Lets first create a new type of `Object`, the `Record`.
+# It's a type of `Object`, so we clone the behavior from `Object`.
+Record: Object clone
+  # Every Object has a build method that gets called in `Object#clone`.
+  # Think of it as a way to setup your fresh new object.
+  # It should always be assigned a method.
+  build: method
+    # Every method gets it's own set of bindings object
+    # On instantiation of the method object all of the arguments get assigned
+    #   to the bindings object.
+    # The `Object#this` method refers to the receiver of the method instead
+    #   of the method bindings.
+    this name: name
+    # This is essentially defining the `Record#age` method the value passed to
+    #   the method via arguments.
+    this age: age
+
+  # Here's another method example that happens to use an internal-only method
+  last_name: method
+    split last
+
+  # Internal only methods, those defined under this function can't be called
+  #   from the outside of the object's scope.
+  internal
+    split: method
+      # If the method was given a `name` argument then it'd use that, but
+      #   otherwise it'll look up the Record's name attribute.
+      name split(delimiter: "\s")
+
+person: Record clone(name: "Kurtis Rainbolt-Greene", age: 25)
+
+person last_name
