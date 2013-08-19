@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    awesome_print (1.1.0)
     blankslate (2.1.2.4)
     coderay (1.0.9)
     colorize (0.5.8)
@@ -10,14 +11,13 @@ GEM
       rest-client
       simplecov (>= 0.7)
       thor
-    json (1.8.0)
+    diff-lcs (1.2.4)
     kramdown (1.0.2)
-    m (1.3.2)
-      method_source (>= 0.6.7)
-      rake (>= 0.9.2.2)
+    metaclass (0.0.1)
     method_source (0.8.1)
     mime-types (1.23)
-    minitest (5.0.2)
+    mocha (0.14.0)
+      metaclass (~> 0.0.1)
     multi_json (1.7.4)
     parslet (1.5.0)
       blankslate (~> 2.0)
@@ -28,6 +28,14 @@ GEM
     rake (10.0.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rspec (2.14.1)
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
+    rspec-core (2.14.4)
+    rspec-expectations (2.14.1)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.14.3)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -40,12 +48,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   coveralls
-  json (~> 1.7)
   kramdown
-  m
-  minitest (~> 5.0)
+  mocha
   parslet
   pry
   rake
+  rspec
   yard
