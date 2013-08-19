@@ -39,7 +39,7 @@ module Dragon
 
     # symbol = "?" | "!" | "_" | "@" | "$" | "%" | "^" | "&" | "/" | "\" | "~" | "-" | "|" | "=" | "*" | "<" | ">" | ";" | "+";
     rule(:symbol) do
-      match['\?!_@$%^&/\\~\-|=\*<>\;+']
+      match['\?!_@$%^&/\\\~\-|=\*<>;\+']
     end
 
     # integer = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
@@ -81,21 +81,21 @@ module Dragon
 
     rule(:single) { str("'") }
 
-    # single quote = "'", { '\', any | "'", any }, "'"
-    rule(:single_quote) do
+    # single quoted = "'", { '\', any | "'", any }, "'"
+    rule(:single_quoted) do
       single >> ((str('\\') >> any) | (single.absent? >> any)).repeat >> single
     end
 
     rule(:double) { str('"') }
 
-    # double quote = '"', { '\', any | '"', any }, '"'
-    rule(:double_quote) do
+    # double quoted = '"', { '\', any | '"', any }, '"'
+    rule(:double_quoted) do
       double >> ((str('\\') >> any) | (double.absent? >> any)).repeat >> double
     end
 
     # text = single quote | double quote
     rule(:text) do
-      (single_quote | double_quote)
+      (single_quoted | double_quoted)
     end
 
 
