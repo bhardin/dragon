@@ -1,10 +1,12 @@
 require_relative "parser/whitespace"
 require_relative "parser/letter"
+require_relative "parser/number"
 
 module Dragon
   class Parser < Parslet::Parser
     include Whitespace
     include Letter
+    include Number
 
     # comment = "#", { any };
     rule(:comment) do
@@ -15,33 +17,6 @@ module Dragon
     # symbol = "?" | "!" | "_" | "@" | "$" | "%" | "^" | "&" | "/" | "\" | "~" | "-" | "|" | "=" | "*" | "<" | ">" | ";" | "+";
     rule(:symbol) do
       match['\?!_@$%^&/\\\~\-|=\*<>;\+']
-    end
-
-    # integer = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
-    rule(:integer) do
-      match["1-9"]
-    end
-
-    # zero = "0";
-    rule(:zero) do
-      str("0")
-    end
-
-    # digit = zero | integer;
-    rule(:digit) do
-      zero | integer
-    end
-
-    rule(:point) { str(".") }
-
-    # decimal = integer, { digit } , ".", { digit };
-    rule(:decimal) do
-      ( integer >> digit.repeat(1) | digit  ) >> point >> digit.repeat(1)
-    end
-
-    # negative = "-", decimal | { digit };
-    rule(:negative) do
-      str("-") >> (decimal | digit.repeat(1))
     end
 
     # number = negative | decimal | digit
