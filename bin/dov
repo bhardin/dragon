@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
-require 'pp'
-require_relative '../dragon'
+require "pry"
+require "awesome_print"
+require_relative "../dragon"
 
-content = File.read ARGV.first
+ap content = File.read(ARGV.first)
 parser = Dragon::Parser.new
-tree = parser.parse content
-transformer = Dragon::Transformer.new
-transformer.apply tree
+ap tree = parser.parse(content)
+# transformer = Dragon::Transformer.new
+# transformer.apply(tree)
