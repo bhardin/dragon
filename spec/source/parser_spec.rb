@@ -89,34 +89,142 @@ describe Dragon::Parser do
     end
   end
 
+  describe "#integer" do
+    it "parses 1" do
+      expect(parse(:integer, "1")).to eq("1")
+    end
+
+    it "parses 5" do
+      expect(parse(:integer, "5")).to eq("5")
+    end
+
+    it "parses 9" do
+      expect(parse(:integer, "9")).to eq("9")
+    end
+  end
+
+  describe "#symbol" do
+    it "parses ?" do
+      expect(parse(:symbol, "?")).to eq("?")
+    end
+
+    it "parses !" do
+      expect(parse(:symbol, "!")).to eq("!")
+    end
+
+    it "parses _" do
+      expect(parse(:symbol, "_")).to eq("_")
+    end
+
+    it "parses @" do
+      expect(parse(:symbol, "@")).to eq("@")
+    end
+
+    it "parses $" do
+      expect(parse(:symbol, "$")).to eq("$")
+    end
+
+    it "parses %" do
+      expect(parse(:symbol, "%")).to eq("%")
+    end
+
+    it "parses ^" do
+      expect(parse(:symbol, "^")).to eq("^")
+    end
+
+    it "parses &" do
+      expect(parse(:symbol, "&")).to eq("&")
+    end
+
+    it "parses /" do
+      expect(parse(:symbol, "/")).to eq("/")
+    end
+
+    it "parses \\" do
+      expect(parse(:symbol, "\\")).to eq("\\")
+    end
+    it "parses ~" do
+      expect(parse(:symbol, "~")).to eq("~")
+    end
+
+    it "parses -" do
+      expect(parse(:symbol, "-")).to eq("-")
+    end
+
+    it "parses |" do
+      expect(parse(:symbol, "|")).to eq("|")
+    end
+
+    it "parses =" do
+      expect(parse(:symbol, "=")).to eq("=")
+    end
+
+    it "parses *" do
+      expect(parse(:symbol, "*")).to eq("*")
+    end
+
+    it "parses <" do
+      expect(parse(:symbol, "<")).to eq("<")
+    end
+
+    it "parses >" do
+      expect(parse(:symbol, ">")).to eq(">")
+    end
+
+    it "parses ;" do
+      expect(parse(:symbol, ";")).to eq(";")
+    end
+
+    it "parses +" do
+      expect(parse(:symbol, "+")).to eq("+")
+    end
+  end
+
+  describe "#zero" do
+    it "parses 0" do
+      expect(parse(:zero, "0")).to eq("0")
+    end
+  end
+
+  describe "#single_quoted" do
+    it "parses 'Foo'" do
+      expect(parse(:single_quoted, "'Foo'")).to eq("'Foo'")
+    end
+  end
+
+  describe "#double_quoted" do
+    it "parses \"Foo\"" do
+      expect(parse(:double_quoted, "\"Foo\"")).to eq("\"Foo\"")
+    end
+  end
+
+  describe "#negative" do
+    it "parses -1" do
+      expect(parse(:negative, "-1")).to eq("-1")
+    end
+
+    it "parses -55" do
+      expect(parse(:negative, "-55")).to eq("-55")
+    end
+
+    it "parses -1.0" do
+      expect(parse(:negative, "-1.0")).to eq("-1.0")
+    end
+
+    it "parses -1.55" do
+      expect(parse(:negative, "-1.55")).to eq("-1.55")
+    end
+  end
+
+  describe "#word"
+  describe "#line"
+  describe "#message"
   describe "#argument"
-  describe "#arguments"
-  describe "#character"
   describe "#close"
-  describe "#colon"
-  describe "#decimal"
+  describe "#open"
   describe "#definition"
-  describe "#delimiter"
-  describe "#double"
-  describe "#double_quote"
   describe "#expression"
   describe "#function"
-  describe "#integer"
-  describe "#letter"
-  describe "#line"
-  describe "#lines"
-  describe "#lower_letter"
-  describe "#message"
-  describe "#negative"
-  describe "#open"
-  describe "#point"
-  describe "#single"
-  describe "#single_quote"
-  describe "#symbol"
-  describe "#text"
-  describe "#upper_letter"
-  describe "#word"
-  describe "#zero"
 end
 
 
