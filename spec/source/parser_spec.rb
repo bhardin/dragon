@@ -24,12 +24,24 @@ describe Dragon::Parser do
   end
 
   describe "#white_space" do
+    it "parses single spaces" do
+      expect(parse(:white_space, "\s")).to eq("\s")
+    end
+
     it "parses multiple spaces" do
       expect(parse(:white_space, "\s\s")).to eq("\s\s")
     end
 
-    it "parses multiple returns" do
-      expect(parse(:white_space, "\r\r")).to eq("\r\r")
+    it "parses single tabs" do
+      expect(parse(:white_space, "\t")).to eq("\t")
+    end
+
+    it "parses multiple spaces" do
+      expect(parse(:white_space, "\t\t")).to eq("\t\t")
+    end
+
+    it "parses mixed spaces" do
+      expect(parse(:white_space, "\s\t")).to eq("\s\t")
     end
   end
 
