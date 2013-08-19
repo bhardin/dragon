@@ -2,7 +2,7 @@ require "parslet"
 
 module Dragon
   class Parser < Parslet::Parser
-    # comment = "#", { any }
+    # comment = "#", { any };
     rule(:comment) do
       str("#") >> any.repeat
     end
@@ -17,9 +17,9 @@ module Dragon
       match["\n|\r"]
     end
 
-    # white space = { space | newline };
+    # white space = { space };
     rule(:white_space) do
-      (space | newline).repeat
+      space.repeat
     end
 
     # upper letter = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z";
@@ -69,79 +69,75 @@ module Dragon
       str("-") >> (decimal | digit.repeat(1))
     end
 
+    # number = negative | decimal | digit
+    rule(:number) do
+      digit.as(:digit) | negative.as(:negative) | decimal.as(:decimal)
+    end
+
     # character = letter | digit | symbol;
     rule(:character) do
       letter | digit | symbol
     end
 
-    # word = { character };
+    # word = character, { character };
     rule(:word) do
       character.repeat(1)
     end
 
     rule(:single) { str("'") }
 
-    # single quoted = "'", { '\', any | "'", any }, "'"
+    # single quoted = "'", [{ '\', ANY | "'"?, ANY }], "'";
     rule(:single_quoted) do
       single >> ((str('\\') >> any) | (single.absent? >> any)).repeat >> single
     end
 
     rule(:double) { str('"') }
 
-    # double quoted = '"', { '\', any | '"', any }, '"'
+    # double quoted = '"', [{ '\', ANY | '"'?, ANY }], '"';
     rule(:double_quoted) do
       double >> ((str('\\') >> any) | (double.absent? >> any)).repeat >> double
     end
 
     # text = single quote | double quote
     rule(:text) do
-      (single_quoted | double_quoted)
-    end
-
-
-    # function = word, [arguments] ;
-    rule(:function) do
-      (word.as(:message) >> arguments.maybe)
-    end
-
-    rule(:delimiter) { str(",") }
-
-    # argument = ",", white space, expression;
-    rule(:argument) do
-      delimiter >> space.repeat(1) >> expression
+      (single_quoted | double_quoted).as(:text)
     end
 
     rule(:open) { str("(") }
     rule(:close) { str(")") }
 
-    # arguments = "(", { expression, { argument } }, ")";
-    rule(:arguments) do
-      open >> (expression >> argument.repeat).repeat.as(:arguments) >> close
+    # function = word, ["(", arguments, ")"];
+    rule(:function) do
+      (word.as(:message) >> (open >> arguments >> close).maybe).as(:function)
     end
 
-    # expression = function, { white space, function };
+    rule(:delimiter) { str(",") }
+
+    # arguments = [{ expression, [{ white space, ",", white space, expression }] }]
+    rule(:arguments) do
+      (expression >> ( white_space >> delimiter >> white_space >> expression ).repeat).repeat.as(:arguments)
+    end
+
+    # expression = number | text | function, [{ space }];
     rule(:expression) do
-      (
-        (
-          digit.as(:digit) |
-          negative.as(:negative) |
-          decimal.as(:decimal) |
-          text.as(:text) |
-          function.as(:function)
-        ) >> (space.repeat(1) >> expression).repeat
-      ).as(:expression)
+      (number | text | function) >> space.maybe
+    end
+
+    # expressions = [{ expression }];
+    rule(:expressions) do
+      expression.repeat.as(:expressions)
     end
 
     rule(:colon) { str(":") }
 
-    # definition = word, ":", expression;
+    # definition = word, ":", white space, expressions;
     rule(:definition) do
-      (word >> colon >> space >> expression).as(:definition)
+      (word >> colon >> white_space >> expressions).as(:definition)
     end
 
     # line = expression | definition, newline;
     rule(:line) do
-      definition| expression | newline
+      definition | expressions | newline
     end
 
     # lines = { line };
