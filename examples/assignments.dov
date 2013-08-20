@@ -1,7 +1,4 @@
 name: "Kurtis"
 age: 24
 likes: [ "Roleplaying Games", "Magic: The Gathering", "Books" ]
-friends: [
-  { name: "Angela Englund", age: 34 },
-  { name: "Michael Englund", age: 36 }
-]
+friends: [ { name: "Angela Englund", age: 34 }, { name: "Michael Englund", age: 36 } ]

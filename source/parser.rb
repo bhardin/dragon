@@ -3,6 +3,7 @@ require_relative "parser/letter"
 require_relative "parser/number"
 require_relative "parser/quote"
 require_relative "parser/expression"
+require_relative "parser/container"
 
 module Dragon
   class Parser < Parslet::Parser
@@ -11,6 +12,7 @@ module Dragon
     include Number
     include Quote
     include Expression
+    include Container
 
     # comment = "#", { any };
     rule(:comment) do
