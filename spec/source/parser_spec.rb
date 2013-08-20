@@ -94,19 +94,4 @@ describe Dragon::Parser do
       expect(parse(:zero, "0")).to eq("0")
     end
   end
-
-  describe "#word"
-  describe "#line"
-  describe "#message"
-  describe "#argument"
-  describe "#close"
-  describe "#open"
-  describe "#definition"
-  describe "#expression"
-  describe "#function"
 end
-
-
-
-
-
