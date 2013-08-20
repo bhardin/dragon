@@ -3,7 +3,7 @@ module Dragon
     module Quote
       # single quoted = "'", [{ '\', ANY | "'"?, ANY }], "'";
       def single_quoted
-        str('"') >> ((str('\\') >> any) | (str('"').absent? >> any)).repeat >> str('"')
+        str("'") >> ((str('\\') >> any) | (str("'").absent? >> any)).repeat >> str("'")
       end
 
       # double quoted = '"', [{ '\', ANY | '"'?, ANY }], '"';
