@@ -14,36 +14,36 @@ module Dragon
     include Expression
     include Container
 
+    root(:lines)
+
     # comment = "#", { any };
-    rule(:comment) do
+    def comment
       str("#") >> any.repeat
     end
 
     # symbol = "?" | "!" | "_" | "@" | "$" | "%" | "^" | "&" | "/" | "\" | "~" | "-" | "|" | "=" | "*" | "<" | ">" | ";" | "+";
-    rule(:symbol) do
+    def symbol
       match['\?!_@$%^&/\\\~\-|=\*<>;\+']
     end
 
     # character = letter | digit | symbol;
-    rule(:character) do
+    def character
       letter | digit | symbol
     end
 
     # word = character, { character };
-    rule(:word) do
+    def word
       character.repeat(1)
     end
 
     # line = expression | definition, newline;
-    rule(:line) do
+    def line
       definition | expressions | newline
     end
 
     # lines = { line };
-    rule(:lines) do
+    def lines
       line.repeat
     end
-
-    root(:lines)
   end
 end
