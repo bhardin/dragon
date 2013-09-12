@@ -5,7 +5,7 @@ dragon
   - [![Dependency Status](https://gemnasium.com/krainboltgreene/dragon.png)](https://gemnasium.com/krainboltgreene/dragon)
   - [![Coverage Status](https://coveralls.io/repos/krainboltgreene/dragon/badge.png)](https://coveralls.io/r/krainboltgreene/dragon)
 
-A summery of this language
+A summary of this language
 
 
 Examples
